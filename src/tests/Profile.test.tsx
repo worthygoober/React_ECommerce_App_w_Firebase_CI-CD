@@ -1,26 +1,32 @@
 // Snapshot testing
 
-import { render } from "@testing-library/react";
+import { render, waitFor } from "@testing-library/react";
 import Profile from "../pages/Profile/Profile";
-import { AuthProvider } from "../context/AuthContext"; // Assuming you have this provider
-import { BrowserRouter as Router, useNavigate } from 'react-router-dom'; // Wrap in Router for useNavigate to work
+ // Assuming you have this provider
+import { MemoryRouter, useNavigate } from "react-router-dom"; // Wrap in Router for useNavigate to work
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useNavigate: jest.fn(), // Mock useNavigate
 }));
 
-test('matches snapshot for Profile', () => {
+jest.mock('../context/AuthContext', () => ({
+  useAuth: jest.fn(),
+}));
+
+import { useAuth } from "../context/AuthContext";
+
+test('matches snapshot for Profile', async () => {
   const mockedNavigate = jest.fn(); // Mock function for navigate
   (useNavigate as jest.Mock).mockReturnValue(mockedNavigate); // Mock the navigate return value
 
+  (useAuth as jest.Mock).mockReturnValue({ user: null });
+
   // Render the Profile component with the AuthContextProvider to provide the user context
   const { asFragment } = render(
-    <Router>
-      <AuthProvider>
+    <MemoryRouter>
         <Profile />
-      </AuthProvider>
-    </Router>
+    </MemoryRouter>
   );
 
   // Create a snapshot of the rendered component
@@ -28,5 +34,7 @@ test('matches snapshot for Profile', () => {
 
   // You can add assertions if needed, for example:
   // Expect that navigate is called with the correct arguments
-  // expect(mockedNavigate).toHaveBeenCalledWith('/login');
+  await waitFor(() => {
+    expect(mockedNavigate).toHaveBeenCalledWith('/login');
+  });
 });
