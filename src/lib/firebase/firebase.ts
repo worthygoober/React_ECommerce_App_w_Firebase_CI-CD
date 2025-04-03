@@ -11,7 +11,7 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 
-const env = typeof import.meta !== "undefined" ? import.meta.env : process.env;
+const env = typeof process !== "undefined" ? process.env : import.meta.env;
 
 const firebaseConfig = {
 
