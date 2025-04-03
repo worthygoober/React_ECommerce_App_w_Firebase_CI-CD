@@ -7,4 +7,8 @@ module.exports = {
     transform: {
         "^.+\\.(ts|tsx)$": "babel-jest",
     },
+    setupFiles: ["<rootDir>/jest.setup.js"], // Add the setup file
+    moduleNameMapper: {
+        "^react-router-dom$": "<rootDir>/node_modules/react-router-dom", // Fixes missing react-router-dom
+      },
   };
