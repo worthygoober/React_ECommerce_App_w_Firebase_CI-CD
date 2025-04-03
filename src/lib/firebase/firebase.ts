@@ -11,21 +11,19 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 
-const env = typeof process !== "undefined" ? process.env : import.meta.env;
-
 const firebaseConfig = {
 
-  apiKey: env.VITE_APP_FIREBASE_API_KEY,
+  apiKey: process.env.VITE_APP_FIREBASE_API_KEY,
 
-  authDomain: env.VITE_APP_FIREBASE_AUTH_DOMAIN,
+  authDomain: process.env.VITE_APP_FIREBASE_AUTH_DOMAIN,
 
-  projectId: env.VITE_APP_FIREBASE_PROJECT_ID,
+  projectId: process.env.VITE_APP_FIREBASE_PROJECT_ID,
 
-  storageBucket: env.VITE_APP_FIREBASE_STORAGE_BUCKET,
+  storageBucket: process.env.VITE_APP_FIREBASE_STORAGE_BUCKET,
 
-  messagingSenderId: env.VITE_APP_FIREBASE_MESSAGING_SENDER_ID,
+  messagingSenderId: process.env.VITE_APP_FIREBASE_MESSAGING_SENDER_ID,
 
-  appId: env.VITE_APP_FIREBASE_APP_ID
+  appId: process.env.VITE_APP_FIREBASE_APP_ID
 
 };
 
