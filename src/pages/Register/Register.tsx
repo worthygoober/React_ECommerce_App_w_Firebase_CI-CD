@@ -7,7 +7,7 @@ import { User } from "../../types/types";
 import './Register.css'
 import { Flip, ToastContainer, toast } from "react-toastify";
 
-const Register = () => {
+const Register: React.FC = () => {
     const [displayName, setDisplayName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

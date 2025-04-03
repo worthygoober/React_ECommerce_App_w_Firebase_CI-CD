@@ -10,7 +10,7 @@ import { CartItem } from "../../types/types";
 import './Cart.css';
 import { Flip, ToastContainer, toast } from "react-toastify";
 
-const Cart = () => {
+const Cart: React.FC = () => {
     const cartItems = useSelector((state: RootState) => state.cart.items);
     const dispatch: AppDispatch = useDispatch();
     const navigate = useNavigate();

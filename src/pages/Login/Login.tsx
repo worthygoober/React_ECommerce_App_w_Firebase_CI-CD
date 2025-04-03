@@ -7,7 +7,7 @@ import './Login.css';
 import { Flip, ToastContainer, toast } from "react-toastify";
 
 
-const Login = () => {
+const Login: React.FC = () => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
 

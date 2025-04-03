@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot for Profile 1`] = `
+<DocumentFragment>
+  <div
+    class="form"
+  >
+    <h1>
+      Profile
+    </h1>
+    <h3>
+      Welcome back, 
+    </h3>
+    <form>
+      <fieldset
+        class="fieldset"
+      >
+        <legend
+          class="legend"
+        >
+          Profile
+        </legend>
+        <input
+          class="input"
+          placeholder="Name"
+          type="text"
+          value=""
+        />
+        <input
+          class="input"
+          placeholder="Address"
+          type="text"
+          value=""
+        />
+        <input
+          class="input"
+          disabled=""
+          placeholder="Email"
+          type="email"
+          value=""
+        />
+      </fieldset>
+      <button
+        class="button"
+        type="submit"
+      >
+        Update Profile
+      </button>
+    </form>
+    <button
+      class="deleteButton"
+    >
+      Delete Account
+    </button>
+    <div>
+      <h2>
+        Order History
+      </h2>
+      <p>
+        No orders found.
+      </p>
+    </div>
+    <section
+      aria-atomic="false"
+      aria-label="Notifications Alt+T"
+      aria-live="polite"
+      aria-relevant="additions text"
+      class="Toastify"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`renders Profile component 1`] = `
+<DocumentFragment>
+  <div
+    class="form"
+  >
+    <h1>
+      Profile
+    </h1>
+    <h3>
+      Welcome back, 
+    </h3>
+    <form>
+      <fieldset
+        class="fieldset"
+      >
+        <legend
+          class="legend"
+        >
+          Profile
+        </legend>
+        <input
+          class="input"
+          placeholder="Name"
+          type="text"
+          value=""
+        />
+        <input
+          class="input"
+          placeholder="Address"
+          type="text"
+          value=""
+        />
+        <input
+          class="input"
+          disabled=""
+          placeholder="Email"
+          type="email"
+          value=""
+        />
+      </fieldset>
+      <button
+        class="button"
+        type="submit"
+      >
+        Update Profile
+      </button>
+    </form>
+    <button
+      class="deleteButton"
+    >
+      Delete Account
+    </button>
+    <div>
+      <h2>
+        Order History
+      </h2>
+      <p>
+        No orders found.
+      </p>
+    </div>
+    <section
+      aria-atomic="false"
+      aria-label="Notifications Alt+T"
+      aria-live="polite"
+      aria-relevant="additions text"
+      class="Toastify"
+    />
+  </div>
+</DocumentFragment>
+`;

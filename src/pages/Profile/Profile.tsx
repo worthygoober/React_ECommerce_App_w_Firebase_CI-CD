@@ -9,7 +9,7 @@ import './Profile.css';
 import { Order } from "../../types/types";
 import { Flip, ToastContainer, toast } from "react-toastify";
 
-const Profile = () => {
+const Profile: React.FC = () => {
   const { user } = useAuth();
   const [displayName, setDisplayName] = useState(user?.displayName || '');
   const [email] = useState(user?.email || '');

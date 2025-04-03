@@ -4,6 +4,7 @@ module.exports = {
     moduleDirectories: ['node_modules', 'src'], // list of directories where jest should look for modules
     moduleNameMapper: {
         '^react-router-dom$': '<rootDir>/src/tests/__mocks__/react-router-dom.tsx',
+        '^react-router-dom$': require.resolve('react-router-dom'),
     },
     transform: {
         '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',

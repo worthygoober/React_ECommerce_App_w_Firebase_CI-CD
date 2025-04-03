@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../lib/firebase/firebase";
 
-const Home = () => {
+const Home: React.FC = () => {
     const products = useSelector((state: RootState) => state.product.products);
     const selectedCategory = useSelector((state: RootState) => state.product.selectedCategory);
     const dispatch = useDispatch<AppDispatch>();
