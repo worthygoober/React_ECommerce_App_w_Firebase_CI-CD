@@ -29,7 +29,7 @@ jobs:
 
       # step 4: run tests
       - name: Run tests
-        run: npm test -- --watchAll=false # adjust this if you have specific test commands/watchAll=false ensure tests run once and exit
+        run: npm test # adjust this if you have specific test commands/watchAll=false ensure tests run once and exit
 
       # step 5: build react app
       - name: Build React app
