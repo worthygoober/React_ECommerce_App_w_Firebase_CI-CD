@@ -13,25 +13,19 @@ jobs:
     runs-on: ubuntu-latest # this specifices the OS for the build environment
 
     steps:
-      # step 1: checkout the code
-      - name: Checkout code
+      - name: Checkout code # step 1: checkout the code
         uses: actions/checkout@v2
 
-      # step 2: set up Node.js
-      - name: Set up Node.js
+      - name: Set up Node.js # step 2: set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20' # or desired Node.js version
 
-      # step 3: install dependencies
-      - name: Install dependencies
+      - name: Install dependencies # step 3: install dependencies
         run: npm install
 
-      # step 4: run tests
-      - name: Run tests
-        run: npm test # adjust this if you have specific test commands/watchAll=false ensure tests run once and exit
+      - name: Run tests # step 4: run tests
+        run: npm test -- --watchAll=false # adjust this if you have specific test commands
 
-      # step 5: build react app
-      - name: Build React app
-        run: npm run build 
-        # don't include skip-ts, fix ts errors and use ts properly instead
+      - name: Build React app # step 5: build react app
+        run: npm run build
