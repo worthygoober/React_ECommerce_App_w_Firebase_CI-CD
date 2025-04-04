@@ -18,6 +18,10 @@ export interface Product {
     createdAt: Timestamp | FieldValue;
     updatedAt: Timestamp | FieldValue;
     quantity: number;
+    rating: {
+        rate: number;
+        count: number;
+    },
 }
 
 export interface Order {

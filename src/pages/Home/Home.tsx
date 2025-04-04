@@ -10,12 +10,14 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../lib/firebase/firebase";
+import { useAuth } from "../../context/AuthContext";
 
 const Home: React.FC = () => {
     const products = useSelector((state: RootState) => state.product.products);
     const selectedCategory = useSelector((state: RootState) => state.product.selectedCategory);
     const dispatch = useDispatch<AppDispatch>();
     const [isLoading, setIsLoading] = useState(true);
+    const {user} = useAuth();
     
     const navigate = useNavigate();
 
@@ -88,7 +90,7 @@ const Home: React.FC = () => {
 
             <div className="container">
                 {filteredProducts.map((product: Product) => (
-                <ProductCard product={product} key={product.id}/>
+                <ProductCard product={product} key={product.id} userId={user?.uid}/>
                 ))}
             </div>
         </div>

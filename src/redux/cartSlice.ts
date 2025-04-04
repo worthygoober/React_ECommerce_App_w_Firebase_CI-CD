@@ -18,7 +18,7 @@ const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
-        addToCart: (state, action: PayloadAction<{ product: Product; userId: string }>) => {
+        addToCart: (state, action: PayloadAction<{ product: Product; userId?: string }>) => {
             if (!state.userId) {
                 state.userId = action.payload.userId;
             }
