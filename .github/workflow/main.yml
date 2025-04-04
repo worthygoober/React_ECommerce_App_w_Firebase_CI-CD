@@ -34,5 +34,4 @@ jobs:
       # step 5: build react app
       - name: Build React app
         run: npm run build 
-        # don't normally include skip-ts, should fix ts errors and use ts properly
-
+        # don't include skip-ts, fix ts errors and use ts properly instead
