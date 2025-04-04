@@ -11,10 +11,10 @@ env:
 on:
   push:
     branches:
-      - main # trigger the workflow on pushes to the main branch
+      - master # trigger the workflow on pushes to the main branch
   pull_request:
     branches:
-      - main # trigger on pull requests targeting the main branch
+      - master # trigger on pull requests targeting the main branch
 
 jobs:
   build: # continuous integration

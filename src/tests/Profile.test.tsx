@@ -2,7 +2,6 @@
 
 import { render, waitFor } from "@testing-library/react";
 import Profile from "../pages/Profile/Profile";
- // Assuming you have this provider
 import { MemoryRouter, useNavigate } from "react-router-dom"; // Wrap in Router for useNavigate to work
 
 jest.mock('react-router-dom', () => ({
@@ -22,7 +21,7 @@ test('matches snapshot for Profile', async () => {
 
   (useAuth as jest.Mock).mockReturnValue({ user: null });
 
-  // Render the Profile component with the AuthContextProvider to provide the user context
+  // Render the Profile component with MemoryRouter
   const { asFragment } = render(
     <MemoryRouter>
         <Profile />
