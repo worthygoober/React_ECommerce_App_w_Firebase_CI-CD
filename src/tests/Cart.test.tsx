@@ -7,7 +7,7 @@ import cartReducer, { addToCart } from '../redux/cartSlice';
 import productReducer from '../redux/productSlice';
 import { Product } from "../types/types";
 import '@testing-library/jest-dom';
-import { getAuth } from "firebase/auth";
+// import { getAuth } from "firebase/auth";
 
 // mock firebase auth to prevent redirect during test
 jest.mock('firebase/auth', () => ({
@@ -35,7 +35,11 @@ const mockProduct: Product = {
     image: 'https://via.placeholder.com/150',
     createdAt: {} as any,
     updatedAt: {} as any,
-    quantity: 1
+    quantity: 1,
+    rating: {
+        rate: 1,
+        count: 1,
+    },
 };
 
 describe('Cart integration test', () => {
