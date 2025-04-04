@@ -5,7 +5,11 @@ import { FaShoppingCart } from "react-icons/fa";
 import { signOut } from "firebase/auth";
 import { auth} from "../../lib/firebase/firebase";
 import { useState } from "react";
+import { IconBaseProps } from "react-icons";
 
+type IconType = (props: IconBaseProps) => React.ReactNode
+
+const SomeIconRef = FaShoppingCart as IconType
 
 const NavBar = () => {
     const { user } = useAuth();
@@ -52,7 +56,7 @@ const NavBar = () => {
           {success && <p className="success">{success}</p>}
         </div>
         <Link to='/cart' className="link">
-          <FaShoppingCart className="cart-icon"/>
+          <SomeIconRef className="cart-icon"/>
           {user && <span className="cart-count">0</span>}
         </Link>
         
