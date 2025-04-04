@@ -6,7 +6,7 @@ import { removeFromCart, updateQuantity, clearCart } from "../../redux/cartSlice
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { db, auth } from "../../lib/firebase/firebase";
 import { onAuthStateChanged, User } from "firebase/auth";
-import { CartItem } from "../../types/types";
+// import { CartItem } from "../../types/types";
 import './Cart.css';
 import { Flip, ToastContainer, toast } from "react-toastify";
 

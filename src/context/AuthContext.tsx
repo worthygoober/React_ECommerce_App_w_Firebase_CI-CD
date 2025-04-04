@@ -9,7 +9,7 @@ interface AuthState {
 
 const AuthContext = createContext<AuthState>({
     user: null,
-    setUser: (user: User) => {}
+    setUser: (_user: User) => {}
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode}) => {
