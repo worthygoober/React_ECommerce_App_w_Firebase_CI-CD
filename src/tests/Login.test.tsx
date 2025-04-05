@@ -41,7 +41,19 @@ jest.mock('firebase/auth', () => ({
 }));
   
 jest.mock('firebase/app', () => ({
-    initializeApp: jest.fn().mockReturnValue({}),
+    initializeApp: jest.fn(() => {
+
+        return {
+          auth: jest.fn(() => ({
+            signInWithEmailAndPassword: jest.fn(() => Promise.resolve({
+              user: { uid: 'test-uid', email: '[test@example.com](mailto:test@example.com)' },
+            })),
+            onAuthStateChanged: jest.fn(),
+            signOut: jest.fn(),
+          })),
+          firestore: jest.fn(() => ({})),
+        };
+    }),
 }));
 
 jest.mock('firebase/firestore', () => ({
@@ -50,10 +62,11 @@ jest.mock('firebase/firestore', () => ({
 
 // 2. Mock environment variables
 beforeAll(() => {
+    console.log('VITE_APP_FIREBASE_API_KEY', process.env.VITE_APP_FIREBASE_API_KEY)
     // Mock all Vite environment variables used in firebase.ts
     process.env = {
       ...process.env, // Preserve existing env vars
-      VITE_APP_FIREBASE_API_KEY: 'test-api-key-mock',
+      VITE_APP_FIREBASE_API_KEY: process.env.VITE_APP_FIREBASE_API_KEY || 'test-api-key-mock',
       VITE_APP_FIREBASE_AUTH_DOMAIN: 'mock-project.firebaseapp.com',
       VITE_APP_FIREBASE_PROJECT_ID: 'mock-project-id',
       VITE_APP_FIREBASE_STORAGE_BUCKET: 'mock-project.appspot.com',

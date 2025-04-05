@@ -11,7 +11,7 @@ export const auth = {
   };
   
   export const firebaseConfig = {
-    apiKey: 'test-api-key',
+    apiKey: process.env.VITE_APP_FIREBASE_API_KEY,
     authDomain: 'test.firebaseapp.com',
     projectId: 'test-project',
     storageBucket: 'test.appspot.com',
