@@ -9,4 +9,8 @@ module.exports = {
     transform: {
         '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
     },
-  };
+    transformIgnorePatterns: [
+        // Add any packages that need to be transformed
+        '/node_modules/(?!(@firebase|firebase|react-router-dom|@testing-library|uuid|other-esm-packages)/)'
+    ],
+};
