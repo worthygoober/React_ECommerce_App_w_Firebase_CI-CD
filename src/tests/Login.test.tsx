@@ -2,7 +2,6 @@
 
 import { render } from '@testing-library/react';
 import Login from '../pages/Login/Login';
-import { getFirestore } from 'firebase/firestore';
 
 // 1. Mock Firebase
 // jest.mock('../lib/firebase.ts', () => ({
