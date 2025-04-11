@@ -49,18 +49,6 @@
     z-index: 100;
 }
 
-.error-message {
-    color: red;
-    font-size: 1rem;
-    margin: 0;
-}
-
-.success-message {
-    color: green;
-    font-size: 1rem;
-    margin: 0;
-}
-
 .cart-count {
     background: #ff6b6b;
     color: white;

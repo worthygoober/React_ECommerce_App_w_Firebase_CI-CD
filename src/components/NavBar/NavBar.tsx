@@ -4,9 +4,9 @@ import { useAuth } from "../../context/AuthContext";
 import { FaShoppingCart } from "react-icons/fa";
 import { signOut } from "firebase/auth";
 import { auth } from "../../lib/firebase/firebase";
-import { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
+import { Flip, ToastContainer, toast } from "react-toastify";
 
 // shopping cart icon
 const SomeIconRef = FaShoppingCart as unknown as React.FC;
@@ -15,20 +15,18 @@ const NavBar = () => {
     const { user } = useAuth();
 
     const navigate = useNavigate();
-    const [error, setError] = useState<string | null>(null);
-    const [success, setSuccess] = useState('');
     const cartItems = useSelector((state: RootState) => state.cart.items);
 
     // logout function instead of individual logout page
     const handleLogout = async () => {
-      setError(null);
       try {
         await signOut(auth);
-        setSuccess('Logout successful');
+        toast.success('Logout successful');
         navigate('/login');
-        setTimeout(() => setSuccess(''), 3000);
       } catch (err: any) {
-        setError(err.message);
+        toast.error(err.message, {
+          autoClose: 5000,
+        });
       }
     };
 
@@ -54,17 +52,26 @@ const NavBar = () => {
           )}
         </div>
 
-        <div className="nav-messages">
-          {error && <p className="error">{error}</p>}
-          {success && <p className="success">{success}</p>}
-        </div>
-
         {/* Shopping Cart icon appears on far right side of NavBar */}
         <Link to='/cart' className="link">
           <SomeIconRef />
           {user && <span className="cart-count">{cartItems.reduce((total, item) => total + item.quantity, 0)}</span>}
         </Link>
         
+        {/* styling for success/error messages */}
+        <ToastContainer 
+                position="top-center"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+                transition={Flip}
+            />
     </nav>
     </>
   );
