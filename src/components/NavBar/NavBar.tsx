@@ -58,21 +58,21 @@ const NavBar = () => {
           {user && <span className="cart-count">{cartItems.reduce((total, item) => total + item.quantity, 0)}</span>}
         </Link>
         
-        {/* styling for success/error messages */}
-        <ToastContainer 
-                position="top-center"
-                autoClose={3000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick={false}
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="dark"
-                transition={Flip}
-            />
     </nav>
+    {/* styling for success/error messages */}
+    <ToastContainer 
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          transition={Flip}
+        />
     </>
   );
 };

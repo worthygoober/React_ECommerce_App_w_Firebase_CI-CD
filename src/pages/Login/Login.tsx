@@ -35,7 +35,7 @@ const Login: React.FC = () => {
                 email,
                 password
             );
-            toast.success("Login successful!");
+            toast.success("Login successful!")
             navigate('/profile');
         } catch (err: any) {
             toast.error(err.message, {
