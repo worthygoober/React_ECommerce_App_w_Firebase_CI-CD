@@ -104,7 +104,9 @@ const Profile: React.FC = () => {
         updatedAt: new Date()
       });
 
-      toast.success('Profile updated successfully');
+      toast.success('Profile updated successfully', {
+        onClose: () => navigate('/profile'),
+      });
     } catch (error: any) {
       toast.error(`Profile update failed!: ${error.message}`, {
         autoClose: 5000,

@@ -21,8 +21,9 @@ const NavBar = () => {
     const handleLogout = async () => {
       try {
         await signOut(auth);
-        toast.success('Logout successful');
-        navigate('/login');
+        toast.success("Logout successful!", {
+          onClose: () => navigate('/login'),
+      });
       } catch (err: any) {
         toast.error(err.message, {
           autoClose: 5000,

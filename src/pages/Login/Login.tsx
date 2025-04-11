@@ -1,30 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import { signInWithEmailAndPassword} from "firebase/auth";
 import { auth } from "../../lib/firebase/firebase";
-import { useAuth } from "../../context/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
 import './Login.css';
 import { Flip, ToastContainer, toast } from "react-toastify";
-
 
 const Login: React.FC = () => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
 
-    const { user } = useAuth();
-
     const navigate = useNavigate();
-
-    // redirect user to profile page after logging in
-    useEffect(() => {
-        if (user) {
-            navigate('/profile')
-        }
-    }, [user, navigate]);
-
-    if (user) {
-        return null;
-    };
     
     // login function using firebase functionality and auth state
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -35,8 +20,9 @@ const Login: React.FC = () => {
                 email,
                 password
             );
-            toast.success("Login successful!")
-            navigate('/profile');
+            toast.success("Login successful!", {
+                onClose: () => navigate('/profile'),
+            });
         } catch (err: any) {
             toast.error(err.message, {
                 autoClose: 5000,
@@ -83,7 +69,7 @@ const Login: React.FC = () => {
             {/* styling for success/error messages */}
             <ToastContainer 
                 position="top-center"
-                autoClose={3000}
+                autoClose={1500}
                 hideProgressBar={false}
                 newestOnTop={false}
                 closeOnClick={false}
