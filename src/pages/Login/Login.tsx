@@ -39,6 +39,7 @@ const Login: React.FC = () => {
             toast.error(err.message, {
                 autoClose: 5000,
             });
+            console.error(err.message);
         }
     };
 

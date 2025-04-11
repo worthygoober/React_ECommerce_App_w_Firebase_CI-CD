@@ -4,6 +4,7 @@
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
   ],
+  
   "compilerOptions": {
     "module": "ESNext", // Ensure the module is set to ESNext for ES Modules
 
@@ -12,6 +13,8 @@
     "moduleResolution": "Node",
 
     "jsx": "react-jsx",
-
+    // "paths": {
+    //   "@/*": ["src/*"]
+    // },
   }
 }

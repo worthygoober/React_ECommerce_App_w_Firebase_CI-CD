@@ -3,8 +3,10 @@ import './NavBar.css';
 import { useAuth } from "../../context/AuthContext";
 import { FaShoppingCart } from "react-icons/fa";
 import { signOut } from "firebase/auth";
-import { auth} from "../../lib/firebase/firebase";
+import { auth } from "../../lib/firebase/firebase";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 // import { IconBaseProps } from "react-icons";
 
 // type IconType = (props: IconBaseProps) => React.ReactNode
@@ -17,6 +19,7 @@ const NavBar = () => {
     const navigate = useNavigate();
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState('');
+    const cartItems = useSelector((state: RootState) => state.cart.items);
 
     const handleLogout = async () => {
       setError(null);
@@ -57,7 +60,7 @@ const NavBar = () => {
         </div>
         <Link to='/cart' className="link">
           <SomeIconRef />
-          {user && <span className="cart-count">0</span>}
+          {user && <span className="cart-count">{cartItems.reduce((total, item) => total + item.quantity, 0)}</span>}
         </Link>
         
     </nav>
