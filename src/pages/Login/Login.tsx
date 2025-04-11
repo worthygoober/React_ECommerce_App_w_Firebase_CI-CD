@@ -15,6 +15,7 @@ const Login: React.FC = () => {
 
     const navigate = useNavigate();
 
+    // redirect user to profile page after logging in
     useEffect(() => {
         if (user) {
             navigate('/profile')
@@ -25,6 +26,7 @@ const Login: React.FC = () => {
         return null;
     };
     
+    // login function using firebase functionality and auth state
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
@@ -49,6 +51,7 @@ const Login: React.FC = () => {
             <h1>Welcome back</h1>
             <h2>Please Login</h2>
 
+            {/* login form */}
             <form onSubmit={handleLogin}>
                 <fieldset className="fieldset">
                 <legend className="legend">Login</legend>
@@ -72,8 +75,12 @@ const Login: React.FC = () => {
                 </fieldset>
 
                 <button type="submit" className="button">Login</button>
+
+                {/* link/button that takes new users to register page */}
                 <Link to='/register' className="button">New Users</Link>
             </form>
+
+            {/* styling for success/error messages */}
             <ToastContainer 
                 position="top-center"
                 autoClose={3000}

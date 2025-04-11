@@ -16,7 +16,7 @@ jest.mock('../context/AuthContext', () => ({
 import { useAuth } from "../context/AuthContext";
 
 test('matches snapshot for Profile', async () => {
-  const mockedNavigate = jest.fn(); // Mock function for navigate
+  const mockedNavigate = jest.fn(); // Mock navigate function
   (useNavigate as jest.Mock).mockReturnValue(mockedNavigate); // Mock the navigate return value
 
   (useAuth as jest.Mock).mockReturnValue({ user: null });
@@ -31,8 +31,6 @@ test('matches snapshot for Profile', async () => {
   // Create a snapshot of the rendered component
   expect(asFragment()).toMatchSnapshot();
 
-  // You can add assertions if needed, for example:
-  // Expect that navigate is called with the correct arguments
   await waitFor(() => {
     expect(mockedNavigate).toHaveBeenCalledWith('/login');
   });

@@ -7,10 +7,8 @@ import { auth } from "../../lib/firebase/firebase";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-// import { IconBaseProps } from "react-icons";
 
-// type IconType = (props: IconBaseProps) => React.ReactNode
-
+// shopping cart icon
 const SomeIconRef = FaShoppingCart as unknown as React.FC;
 
 const NavBar = () => {
@@ -21,6 +19,7 @@ const NavBar = () => {
     const [success, setSuccess] = useState('');
     const cartItems = useSelector((state: RootState) => state.cart.items);
 
+    // logout function instead of individual logout page
     const handleLogout = async () => {
       setError(null);
       try {
@@ -39,6 +38,7 @@ const NavBar = () => {
         <div className="link">
           <Link to='/' className="link">Home</Link>
           
+          {/* NavBar varies depending on user state */}
           {user ? (
               <>
               <Link to='/profile' className="link">Profile</Link>
@@ -58,6 +58,8 @@ const NavBar = () => {
           {error && <p className="error">{error}</p>}
           {success && <p className="success">{success}</p>}
         </div>
+
+        {/* Shopping Cart icon appears on far right side of NavBar */}
         <Link to='/cart' className="link">
           <SomeIconRef />
           {user && <span className="cart-count">{cartItems.reduce((total, item) => total + item.quantity, 0)}</span>}

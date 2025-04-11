@@ -19,6 +19,7 @@ const Profile: React.FC = () => {
 
   const navigate = useNavigate();
 
+  // checks auth state and if user not logged in, redirects to login page
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (!user) {
@@ -28,6 +29,7 @@ const Profile: React.FC = () => {
     return () => unsubscribe();
   }, [navigate]);
 
+  // pulls user data from firestore doc so name and address can be displayed
   useEffect(() => {
     console.log('User state in useEffect:', user);
     const loadUserData = async () => {
@@ -56,6 +58,7 @@ const Profile: React.FC = () => {
     loadUserData();
   }, [user]);
 
+  // fetches orders made by user from firestore
   useEffect(() => {
     if (!user) return;
 
@@ -81,6 +84,7 @@ const Profile: React.FC = () => {
     fetchOrders();
   }, [user]);
 
+  // function that handles users updating their name or address.
   const handleUpdateProfile = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -109,6 +113,7 @@ const Profile: React.FC = () => {
     }
   };
 
+  // function that deletes the user by deleting the user doc from firestore
   const handleDeleteAccount = async () => {
     if (!user?.uid) return;
 
@@ -140,6 +145,7 @@ const Profile: React.FC = () => {
 
       <h3>Welcome back, {user?.displayName}</h3>
 
+      {/* form displaying user info and allowing changes to name and address, but not email */}
       <form onSubmit={handleUpdateProfile}>
         <fieldset className="fieldset">
         <legend className="legend">Profile</legend>
@@ -177,6 +183,7 @@ const Profile: React.FC = () => {
             Delete Account
       </button>
 
+      {/* displays orders based on the order id. expands to display more info when clicked */}
       <div>
         <h2>Order History</h2>
         {orders.length === 0 ? 
@@ -204,6 +211,8 @@ const Profile: React.FC = () => {
           </ul>
         )}
       </div>
+
+      {/* styling for success/error messages */}
       <ToastContainer 
         position="top-center"
         autoClose={3000}

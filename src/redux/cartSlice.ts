@@ -1,10 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Product } from "../types/types";
 
+// lets cart item include product type
 interface CartItem extends Product {
     quantity: number;
 }
 
+// esta cart state
 interface CartState {
     items: CartItem[];
     userId?: string;
@@ -14,6 +16,7 @@ const initialState: CartState ={
     items: JSON.parse(sessionStorage.getItem('cart') || '[]'),
 };
 
+// manages cart state and actions, adding to cart, updating item quantity, removing items from cart, and emptying cart
 const cartSlice = createSlice({
     name: 'cart',
     initialState,

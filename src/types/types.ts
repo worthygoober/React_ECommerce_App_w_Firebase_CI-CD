@@ -1,5 +1,6 @@
 import { Timestamp, FieldValue} from "firebase/firestore";
 
+// esta user type
 export interface User {
     uid: string;
     displayName: string;
@@ -8,6 +9,7 @@ export interface User {
     createdAt: Timestamp | FieldValue;
 }
 
+// esta product type
 export interface Product {
     id: string;
     title: string;
@@ -24,6 +26,7 @@ export interface Product {
     },
 }
 
+// esta order type
 export interface Order {
     id: string;
     userId: string;
@@ -37,6 +40,7 @@ export interface Order {
     }[];
 }
 
+// esta cart item type
 export interface CartItem {
     id: string;
     title: string;
@@ -45,4 +49,5 @@ export interface CartItem {
     image: string;
 }
 
+// esta category type
 export type Category = string;

@@ -15,6 +15,7 @@ const Register: React.FC = () => {
 
     const navigate = useNavigate();
 
+    // function to create new user using firebase functionality, creates user doc in firestore
     const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
@@ -53,6 +54,7 @@ const Register: React.FC = () => {
         <div className="form">
             <h1>Create an Account</h1>
 
+            {/* registration form. name, password, and email are required. address optional */}
             <form onSubmit={handleRegister}>
                 <fieldset className="fieldset">
                 <legend className="legend">Register</legend>
@@ -98,6 +100,7 @@ const Register: React.FC = () => {
                 
             </form>
 
+            {/* styling for success/error messages */}
             <ToastContainer 
                 position="top-center"
                 autoClose={3000}

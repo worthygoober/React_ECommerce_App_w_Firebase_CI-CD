@@ -21,16 +21,19 @@ const Home: React.FC = () => {
     
     const navigate = useNavigate();
 
+    // fetches products to display from api
     const {data: productsData} = useQuery({
         queryKey: ['products'],
         queryFn: fetchProducts,
     });
 
+    // fetches categories to display from api
     const {data: categories} = useQuery({
         queryKey: ['category'],
         queryFn: fetchCategories,
     });
 
+    // check auth state to see if user is logged in, if not, user is redirected to login page
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
           if (!user) {
@@ -45,12 +48,14 @@ const Home: React.FC = () => {
         return () => unsubscribe();
       }, [navigate]);
 
+    // if there are products pulled from api, then dispatch from productSlice is used to display products
     useEffect(() => {
         if (productsData) {
             dispatch(setProducts(productsData.data));
         }
     }, [dispatch, productsData])
 
+    // function that filters products based on the selected category in category drop down menu
     const getFilteredProducts = () => {
         if (!products) return [];
         if (selectedCategory) {
@@ -63,6 +68,7 @@ const Home: React.FC = () => {
 
     const filteredProducts = getFilteredProducts();
 
+    // loading message that appears if user is not logged in before redirection to login page
     if (isLoading) { 
         return (
             <div className="loading-container">
@@ -73,6 +79,7 @@ const Home: React.FC = () => {
     return(
         <>
         <div>
+            {/* drop down menu and reset button for categories */}
             <select onChange={(e) => dispatch(setSelectedCategory(e.target.value))}
                 value={selectedCategory || ''}
                 >
@@ -88,6 +95,7 @@ const Home: React.FC = () => {
                 Reset category
             </button>
 
+            {/* ensure products match Product type and are displayed based on product card */}
             <div className="container">
                 {filteredProducts.map((product: Product) => (
                 <ProductCard product={product} key={product.id} userId={user?.uid}/>

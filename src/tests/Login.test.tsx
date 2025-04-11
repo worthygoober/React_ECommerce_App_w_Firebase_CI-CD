@@ -3,29 +3,7 @@
 import { render } from '@testing-library/react';
 import Login from '../pages/Login/Login';
 
-// 1. Mock Firebase
-// jest.mock('../lib/firebase.ts', () => ({
-//   auth: {
-//     signInWithEmailAndPassword: jest.fn(() => Promise.resolve({ 
-//       user: {
-//         uid: 'test-uid',
-//         email: 'test@example.com'
-//       } 
-//     })),
-//     // Add other auth methods if used in component
-//     onAuthStateChanged: jest.fn(),
-//     signOut: jest.fn()
-//   },
-//   firebaseConfig: {
-//     apiKey: 'test-api-key',
-//     authDomain: 'test.firebaseapp.com',
-//     projectId: 'test-project',
-//     storageBucket: 'test.appspot.com',
-//     messagingSenderId: '123456789',
-//     appId: '1:123456789:web:abcdef123456'
-//   }
-// }));
-
+// mocks firebase authentication
 jest.mock('firebase/auth', () => ({
     getAuth: jest.fn(() => ({
       signInWithEmailAndPassword: jest.fn(() => Promise.resolve({
@@ -72,9 +50,6 @@ beforeAll(() => {
       VITE_APP_FIREBASE_STORAGE_BUCKET: 'mock-project.appspot.com',
       VITE_APP_FIREBASE_MESSAGING_SENDER_ID: '1234567890',
       VITE_APP_FIREBASE_APP_ID: '1:1234567890:web:mockappid',
-      
-    //   // Add any other Vite env vars your app uses
-    //   VITE_APP_OTHER_SERVICE_KEY: 'other-service-key-mock'
     };
   });
 
@@ -99,8 +74,6 @@ jest.mock('../context/AuthContext', () => ({
 // Cleanup after each test
 afterEach(() => {
   jest.clearAllMocks();
-  // Clean up any rendered components
-//   document.body.innerHTML = '';
 });
 
 describe('Login Component', () => {

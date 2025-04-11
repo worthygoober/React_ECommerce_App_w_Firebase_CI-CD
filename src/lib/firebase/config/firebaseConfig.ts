@@ -1,3 +1,4 @@
+// api key and environmental variables
 export const firebaseConfig = {
 
     apiKey: process.env.VITE_APP_FIREBASE_API_KEY,
